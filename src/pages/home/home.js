@@ -5,7 +5,7 @@ import axios from 'axios'
 import "./styles.css"
 import { isAuth } from '../../middlewares/ProtectedRoutes'
 
-const Login = () => {
+const Home = () => {
     const [loginData, setLoginData] = useState({})
     const [login, setLogin] = useState(null)
 
@@ -75,7 +75,7 @@ const Login = () => {
                     >Login</Button>
                     <Button 
                         as={Link}
-                        to="/newauthor"
+                        to="/subscribe"
                     >Subscribe</Button>
                 </Col>
             </Form>
@@ -83,4 +83,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Home
