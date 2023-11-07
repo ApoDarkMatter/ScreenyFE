@@ -33,8 +33,8 @@ const HomeNavbar = () => {
                         className="me-2"
                         aria-label="Password"
                     />
-                    <Button variant="outline-success">Login</Button>
-                    <Button variant="outline-success">Subscribe</Button>
+                    <Button variant="success">Login</Button>
+                    <Button variant="warning">Subscribe</Button>
                 </Form>
             </Navbar.Collapse>
         </Container>

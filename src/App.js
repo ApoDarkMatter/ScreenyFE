@@ -5,6 +5,7 @@ import Administration from './pages/administation/administration';
 import Home from "./pages/home/home";
 import Subscribe from "./pages/subscribe/subscribe";
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {

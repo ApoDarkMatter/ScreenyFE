@@ -4,6 +4,7 @@ import {Button, Col, Form} from 'react-bootstrap'
 import axios from 'axios'
 import "./styles.css"
 import { isAuth } from '../../middlewares/ProtectedRoutes'
+import HomeNavbar from '../../components/home-navbar/HomeNavbar'
 
 const Home = () => {
     const [loginData, setLoginData] = useState({})
@@ -46,6 +47,7 @@ const Home = () => {
     
     return (
         <>
+            <HomeNavbar/>
             <Form onSubmit={onSubmit} className="inputPadding">
                 <Col lg="4" className="mx-auto">
                     <h1>Login</h1>
