@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import Login from "../pages/home/home"
+import Home from "../pages/home/home"
 
 export const isAuth = () => {
     return JSON.parse(localStorage.getItem('loggedInUser'))
@@ -8,7 +8,7 @@ export const isAuth = () => {
 const ProtectedRoutes = () => {
     const auth = isAuth()
 
-    return auth ? <Outlet /> : <Login/>
+    return auth ? <Outlet /> : <Home/>
 }
 
 export default ProtectedRoutes

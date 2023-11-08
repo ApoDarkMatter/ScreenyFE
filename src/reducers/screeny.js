@@ -4,7 +4,7 @@ const initialState = {
     isLoading: false,
 }
 
-export const blogPost = createSlice({
+export const screeny = createSlice({
     name: "screeny",
     initialState: initialState,
     reducers: {

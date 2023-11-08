@@ -1,8 +1,13 @@
 import React from 'react'
+import HomeNavbarAuth from '../../components/home-navbar-auth/HomeNavbarAuth'
 
 function Administration() {
   return (
-    <div>Login Successfully - This is Administration Area!</div>
+    <>
+      <HomeNavbarAuth />
+      <div>Login Successfully - This is Administration Area!</div>
+    </>
+    
   )
 }
 
