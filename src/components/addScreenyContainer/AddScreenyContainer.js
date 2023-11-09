@@ -9,9 +9,8 @@ const AddScreenyContainer = () => {
     const session = useSession()
 
     const [containerName, setContainerName] = useState("");
-    const [viewCode, setViewCode] = useState("");
 
-    const createViewCode = async () => {
+    const createContainer = async () => {
         const rand = Math.floor(100000 + Math.random() * 900000)
         console.log(rand);
         
@@ -19,36 +18,34 @@ const AddScreenyContainer = () => {
             const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/containers/viewCode/${rand}`);
             console.log(response);
 
-            if(response.data.codes = []) {
-                setViewCode(rand)
-                try {
-                    const response = await axios.post(
-                      `${process.env.REACT_APP_SERVER_BASE_URL}/containers`,
-                      formData
-                    );
-                    console.log("Screeny Container created successfully:", response.data);
-                  } catch (error) {
-                    console.log("Si è verificato un errore:", error);
-                  }
+            if(response.data.codes === null) {
+              const formData = {
+                containerName: containerName,
+                shopId: session.id,
+                viewCode: rand.toString()
+              };
+              try {
+                  const response = await axios.post(
+                    `${process.env.REACT_APP_SERVER_BASE_URL}/containers`,
+                    formData
+                  );
+                  console.log("Screeny Container created successfully:", response.data);
+                } catch (error) {
+                  console.log("Si è verificato un errore:", error);
+              }
             } else {
-                console.log(`Numero ${rand} già presente`);
-                //createViewCode()
+              console.log(`Numero ${rand} già presente`);
+              createContainer()
             }
           } catch (error) {
             console.log("Si è verificato un errore:", error);
           }
     }
 
-    const formData = {
-      containerName: containerName,
-      shopId: session.id,
-      viewCode: viewCode,
-    };
-  
     const handleSubmit = async (event) => {
       event.preventDefault();
       
-      createViewCode()
+      createContainer()
     }
     
 
