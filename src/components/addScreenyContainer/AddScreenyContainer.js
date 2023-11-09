@@ -17,9 +17,10 @@ const AddScreenyContainer = () => {
         
         try {
             const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/containers/viewCode/${rand}`);
+            console.log(response);
 
-            if(!response) {
-                setViewCode(correctNum)
+            if(response.data.codes = []) {
+                setViewCode(rand)
                 try {
                     const response = await axios.post(
                       `${process.env.REACT_APP_SERVER_BASE_URL}/containers`,
@@ -31,7 +32,7 @@ const AddScreenyContainer = () => {
                   }
             } else {
                 console.log(`Numero ${rand} già presente`);
-                createViewCode()
+                //createViewCode()
             }
           } catch (error) {
             console.log("Si è verificato un errore:", error);
