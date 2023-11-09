@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HomeNavbarAuth from '../../components/home-navbar-auth/HomeNavbarAuth'
+import { Button, Modal } from 'react-bootstrap';
+import AddScreenyContainer from '../../components/addScreenyContainer/AddScreenyContainer';
 
 function Administration() {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
       <HomeNavbarAuth />
-      <div>Login Successfully - This is Administration Area!</div>
+      <h1>Screeny Container List</h1>
+      <Button variant="warning" onClick={handleShow}>
+            Add Screeny Container
+        </Button>
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Create New Screeny Container</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <AddScreenyContainer/>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+            </Modal.Footer>
+        </Modal>
     </>
     
   )

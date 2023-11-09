@@ -92,22 +92,22 @@ const HomeNavbar = () => {
                             <Button
                                 type="submit"
                             >Login</Button>
-                            <Button variant="primary" onClick={handleShow}>
-                                SubscribeModalTest
+                            <Button variant="warning" onClick={handleShow}>
+                                Subscribe
                             </Button>
                             <Modal show={show} onHide={handleClose}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>Subscribe New User</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <Subscribe />
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <Button variant="secondary" onClick={handleClose}>
-                                    Close
-                                </Button>
-                            </Modal.Footer>
-                        </Modal>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Subscribe New User</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <Subscribe />
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button variant="secondary" onClick={handleClose}>
+                                        Close
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal>
                         </Form>
                     </Navbar.Collapse>
                 </Container>
