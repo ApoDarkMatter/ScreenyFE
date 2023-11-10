@@ -32,8 +32,6 @@ const ScreenyContainer = () => {
         getScreenyContainerList()
     }, [isLoading])
     
-
-
     return (
         <> 
           <Container>
