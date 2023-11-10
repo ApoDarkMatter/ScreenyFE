@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SingleScreenyContainer from '../singleScreenyContainer/SingleScreenyContainer'
 import { nanoid } from '@reduxjs/toolkit'
-import { setIsLoading } from '../../reducers/screeny'
+import { setIsLoading } from '../../../reducers/screeny'
 import { useDispatch, useSelector } from 'react-redux'
-import useSession from '../../hooks/useSession'
+import useSession from '../../../hooks/useSession'
+import { Container, Row, Col } from 'react-bootstrap'
+
 
 const ScreenyContainer = () => {
 
@@ -34,11 +36,17 @@ const ScreenyContainer = () => {
 
     return (
         <> 
-          {screenyContainerList && screenyContainerList.map((container) => {
-            return (
-              <SingleScreenyContainer key={nanoid()} screeny={container}/>
-            )
-          })}
+          <Container>
+            <Col>
+              {screenyContainerList && screenyContainerList.map((container) => {
+                return (
+                  <Row key={nanoid()}>
+                    <SingleScreenyContainer screeny={container}/>
+                  </Row>
+                )
+              })}
+            </Col>
+          </Container>
         </>
     )
 }

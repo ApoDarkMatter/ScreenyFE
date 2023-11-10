@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import HomeNavbarAuth from '../../components/home-navbar-auth/HomeNavbarAuth'
-import { Button, Modal } from 'react-bootstrap';
-import AddScreenyContainer from '../../components/addScreenyContainer/AddScreenyContainer';
-import ScreenyContainer from '../../components/screenyContainer/ScreenyContainer';
+import HomeNavbarAuth from '../../components/navbar/home-navbar-auth/HomeNavbarAuth'
+import { Button, Modal, Row, Container } from 'react-bootstrap';
+import AddScreenyContainer from '../../components/screeny-container/addScreenyContainer/AddScreenyContainer';
+import ScreenyContainer from '../../components/screeny-container/screenyContainer/ScreenyContainer';
 
 function Administration() {
 
@@ -15,9 +15,11 @@ function Administration() {
     <>
         <HomeNavbarAuth />
         <h1>Screeny Container List</h1>
-        <Button variant="warning" onClick={handleShow}>
-            Add Screeny Container
-        </Button>
+        <Container fluid="lg">
+            <Row >
+                <Button style={{marginTop: "1rem", marginBottom: "1rem"}}variant="warning" onClick={handleShow}>Add Screeny Container</Button>
+            </Row>
+        </Container>
         <ScreenyContainer />
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>

@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {useNavigate} from 'react-router-dom'
-import useSession from '../../hooks/useSession';
+import useSession from '../../../hooks/useSession';
 
 const HomeNavbarAuth = () => {
 
@@ -21,7 +21,7 @@ const HomeNavbarAuth = () => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
-                <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                <Navbar.Brand href="#">Screeny</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav

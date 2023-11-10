@@ -4,11 +4,11 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { isAuth } from '../../middlewares/ProtectedRoutes'
+import { isAuth } from '../../../middlewares/ProtectedRoutes'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 //import Subscribe from '../subscribe/subscribe';
-import Subscribe from '../subscribe/Subscribe'
+import Subscribe from '../../subscribe/Subscribe'
 import { Modal } from 'react-bootstrap';
 
 const HomeNavbar = () => {
@@ -59,7 +59,7 @@ const HomeNavbar = () => {
         return (
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container fluid>
-                    <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                    <Navbar.Brand href="#">Screeny</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
