@@ -11,21 +11,27 @@ const View = () => {
     const [screenyList, setScreenyList] = useState([])
     const [screenContainer, setScreenContainer] = useState([])
 
-    const getScreenyList = async () => {
+    const getScreenyContainer = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/containers/viewCode/${id}`)
         console.log(response.data.codes);
         setScreenContainer(response.data.codes)
-        try {
-          const responseAllScreen = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/screen/${screenContainer._id}`)
-          console.log(responseAllScreen.data.screens);
-          setScreenyList(responseAllScreen.data.screens)
-        } catch (e) {
-          console.log(e)
-        }
       } catch (error) {
         console.log(error);
       }
+    }
+
+    const getScreenyList = async () => {
+        await getScreenyContainer()  
+        if(screenContainer)  {
+          try {
+            const responseAllScreen = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/screen/${screenContainer._id}`)
+            console.log(responseAllScreen.data.screens);
+            setScreenyList(responseAllScreen.data.screens)
+          } catch (e) {
+            console.log(e)
+          }
+        }
     }
 
     useEffect(() => {
