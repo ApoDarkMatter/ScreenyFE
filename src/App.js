@@ -6,6 +6,7 @@ import Home from "./pages/home/home";
 import Screeny from './pages/screeny/screeny'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import View from "./pages/view/view";
 
 
 function App() {
@@ -13,9 +14,11 @@ function App() {
     <Router>
     <Routes>
       <Route exact path="/" element={<Home />} />
+      <Route path="/screeny/:id" element={<Screeny />} />
+      <Route path="/view/" element={<View />} />
+      <Route path="/view/:id" element={<View />} />
       <Route element={<ProtectedRoutes />}>
           <Route path="/administration" element={<Administration />} />
-          <Route path="/screeny/:id" element={<Screeny />} />
       </Route>
     </Routes>
   </Router>

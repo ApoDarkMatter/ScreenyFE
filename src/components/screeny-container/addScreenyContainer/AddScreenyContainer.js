@@ -4,7 +4,7 @@ import useSession from '../../../hooks/useSession'
 import { Container, Form, Button } from 'react-bootstrap'
 
 
-const AddScreenyContainer = () => {
+const AddScreenyContainer = ({fun}) => {
 
     const session = useSession()
 
@@ -30,6 +30,7 @@ const AddScreenyContainer = () => {
                     formData
                   );
                   console.log("Screeny Container created successfully:", response.data);
+                  fun()
                 } catch (error) {
                   console.log("Si è verificato un errore:", error);
               }

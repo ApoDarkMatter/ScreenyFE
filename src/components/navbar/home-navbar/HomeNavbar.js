@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { isAuth } from '../../../middlewares/ProtectedRoutes'
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 //import Subscribe from '../subscribe/subscribe';
 import Subscribe from '../../subscribe/Subscribe'
@@ -67,8 +67,8 @@ const HomeNavbar = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                             >
-                            <Nav.Link href="#action1">Home</Nav.Link>
-                            <Nav.Link href="#action2">Start your screeny!</Nav.Link>
+                            <Nav.Link as={Link} to="/">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/view">Start your screeny!</Nav.Link>
                         </Nav>
                         <Form className="d-flex" onSubmit={onSubmit}>
                             <Form.Control

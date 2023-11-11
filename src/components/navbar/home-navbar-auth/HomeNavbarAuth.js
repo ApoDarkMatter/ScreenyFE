@@ -4,18 +4,16 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {Link, useNavigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import useSession from '../../../hooks/useSession'
+import "./style.css"
 
 const HomeNavbarAuth = () => {
 
     const session = useSession()
 
-    const navigate = useNavigate()
-
     const logout = () => {
-        localStorage.clear()
-        navigate('/')
+        localStorage.removeItem('loggedInUser')
     }
 
     return (
@@ -30,13 +28,14 @@ const HomeNavbarAuth = () => {
                         navbarScroll
                         >
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
-                        <Nav.Link as={Link} to="/">Start your screeny!</Nav.Link>
+                        <Nav.Link as={Link} to="/view">Start your screeny!</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <Navbar.Text style={{marginRight:"1rem"}}>Hi <b>{session.shopName}</b></Navbar.Text>
+                        <Button style={{marginRight:"1rem"}} as={Link} to="/administration" variant="warning">Go to Administration</Button>
                         <Button 
                             onClick={logout}
-                        >Logout</Button>
+                        ><a href="/" className="link">Logout</a></Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>

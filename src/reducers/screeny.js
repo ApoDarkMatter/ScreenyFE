@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = { 
     isLoading: false,
     screenyContainerList: [],
-    screenyList: []
+    screenyList: [],
+    reload: false,
 }
 
 export const screeny = createSlice({
@@ -11,6 +12,9 @@ export const screeny = createSlice({
     initialState: initialState,
     reducers: {
       setIsLoading: (state,action) => {
+        state.isLoading = action.payload
+      },
+      setReload: (state,action) => {
         state.isLoading = action.payload
       },
       setScreenyContainerList: (state,action) => {
