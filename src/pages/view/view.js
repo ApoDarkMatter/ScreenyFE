@@ -12,16 +12,17 @@ const View = () => {
     const [screenContainer, setScreenContainer] = useState([])
 
     const getScreenyContainer = async () => {
-      await getScreenyList() 
       try {
         const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/containers/viewCode/${id}`)
         setScreenContainer(response.data.codes)
+
       } catch (error) {
         console.log(error);
       }
     }
 
     const getScreenyList = async () => {
+      await getScreenyContainer()
       try { 
         console.log(screenContainer);
         const responseAllScreen = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/screen/${screenContainer._id}`)
@@ -35,7 +36,7 @@ const View = () => {
 
     useEffect(() => {
       if(id) {
-        getScreenyContainer()
+        getScreenyList()
       }
     }, [])
 
