@@ -49,7 +49,7 @@ const View = () => {
       return (
         <>
             <div>View With Code</div>
-            <Carousel interval="5000">
+            <Carousel interval="5000" pause="false">
               {screenyList && screenyList.map((screeny) => {
                 return (
                   <Carousel.Item key={nanoid()}>
