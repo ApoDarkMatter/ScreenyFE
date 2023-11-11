@@ -26,7 +26,6 @@ const SingleScreenyContainer = (screeny) => {
     setShow(true);
   }
 
-  console.log(screeny)
   const {_id, containerName, viewCode} = screeny.screeny
 
   const deleteContainer = async () => {
