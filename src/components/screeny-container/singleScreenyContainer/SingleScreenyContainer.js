@@ -8,9 +8,14 @@ import { Link } from 'react-router-dom';
 import { IconContext } from "react-icons";
 import { Container, Row, Col, Modal, Form } from 'react-bootstrap';
 import axios from 'axios';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsLoading } from '../../../reducers/screeny';
 
 const SingleScreenyContainer = (screeny) => {
+
+  const isLoading = useSelector((state) => state.screen.isLoading)
+
+  const dispatch = useDispatch()
 
   const [show, setShow] = useState(false);
   const [name, setName] = useState("")
@@ -28,6 +33,7 @@ const SingleScreenyContainer = (screeny) => {
       try {
         await axios.delete(`${process.env.REACT_APP_SERVER_BASE_URL}/containers/${_id}`)
         console.log("Container deleted succesfully");
+        dispatch(setIsLoading(!isLoading))
       } catch (error) {
         console.log(error);
       }

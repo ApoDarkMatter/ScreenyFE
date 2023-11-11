@@ -3,6 +3,6 @@ import screeny from "../reducers/screeny";
 
 export const store = configureStore({
   reducer: {
-    screeny: screeny,
+    screen: screeny,
   },
 });

@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import HomeNavbarAuth from '../../components/navbar/home-navbar-auth/HomeNavbarAuth'
-import { Button, Modal, Row, Container } from 'react-bootstrap';
+import { Button, Modal, Row, Container, Col } from 'react-bootstrap';
 import AddScreenyContainer from '../../components/screeny-container/addScreenyContainer/AddScreenyContainer';
-import ScreenyContainer from '../../components/screeny-container/screenyContainer/ScreenyContainer';
-import { useDispatch, useSelector } from 'react-redux';
 import {AiOutlinePlusSquare} from 'react-icons/ai'
-import { setIsLoading } from '../../reducers/screeny';
 import axios from 'axios'
 import useSession from '../../hooks/useSession'
+import SingleScreenyContainer from '../../components/screeny-container/singleScreenyContainer/SingleScreenyContainer';
+import { nanoid } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux'
+import {setIsLoading} from '../../reducers/screeny'
 
 function Administration() {
+    const isLoading = useSelector((state) => state.screen.isLoading)
 
-    const isLoading = useSelector((state) => state.isLoading)
     const [screenyContainerList, setScreenyContainerList] = useState([])
+
+    const dispatch = useDispatch()
+
     const [show, setShow] = useState(false);
     const session = useSession()
-    
-    const dispatch = useDispatch()
 
     const handleClose = () => {
         setShow(false);
@@ -35,6 +37,7 @@ function Administration() {
 
     useEffect(() => {
         getScreenyContainerList()
+        
     }, [isLoading])
 
     return (
@@ -46,7 +49,17 @@ function Administration() {
                     <Button size="lg" style={{marginTop: "1rem", marginBottom: "1rem"}}variant="warning" onClick={handleShow}>Add New Screeny Container <AiOutlinePlusSquare /></Button>
                 </Row>
             </Container>
-            <ScreenyContainer allScreeny={screenyContainerList}/>
+            <Container>
+                <Col>
+                    {screenyContainerList && screenyContainerList.map((container) => {
+                        return (
+                        <Row key={nanoid()}>
+                            <SingleScreenyContainer screeny={container}/>
+                        </Row>
+                        )
+                    })}
+                </Col>
+            </Container>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Create New Screeny Container</Modal.Title>

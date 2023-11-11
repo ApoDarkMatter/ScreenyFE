@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Form, Button } from 'react-bootstrap';
 import useSession from '../../../hooks/useSession';
 import axios from 'axios';
-
+import HomeNavbarAuth from '../../navbar/home-navbar-auth/HomeNavbarAuth';
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsLoading } from '../../../reducers/screeny'
 
 function AddScreeny(screenyId) {
     console.log(screenyId);
+
+    const isLoading = useSelector((state) => state.screen.isLoading)
+
+    const dispatch = useDispatch()
 
     const session = useSession()
 
@@ -23,7 +29,7 @@ function AddScreeny(screenyId) {
     const formData = {
         text: text,
         containerId: screenyId.screenyId,
-        shopId: session.id
+        shopId: session.id,
     };
 
       // create a function to upload the file
@@ -64,9 +70,10 @@ function AddScreeny(screenyId) {
             finalBody,
             { headers: { "Content-Type": "application/json" } }
           );
-          console.log("Post creato con successo:", response.data);
+          console.log("Screen creato con successo:", response.data);
           setFile(null);
           console.log("uploadedFile:", uploadedFile);
+          dispatch(setIsLoading(!isLoading))
         } catch (error) {
           console.log("Si è verificato un errore:", error);
         }
@@ -75,11 +82,18 @@ function AddScreeny(screenyId) {
       }
 
     }
+
+    useEffect(() => {
+      
+    }, [isLoading])
+    
     
 
   return (
-    <>
+    <> 
+        <HomeNavbarAuth/>
         <Container>
+            <h2>Add New Screeny!</h2>
         {/* setting the form encType */}
             <Form
                 className="mt-5"
@@ -121,7 +135,7 @@ function AddScreeny(screenyId) {
                     </Button>
                 </Form.Group>
             </Form>
-        </Container>
+        </Container>        
     </>
   )
 }

@@ -12,16 +12,16 @@ import View from "./pages/view/view";
 function App() {
   return (
     <Router>
-    <Routes>
-      <Route exact path="/" element={<Home />} />
-      <Route path="/screeny/:id" element={<Screeny />} />
-      <Route path="/view/" element={<View />} />
-      <Route path="/view/:id" element={<View />} />
-      <Route element={<ProtectedRoutes />}>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/view/" element={<View />} />
+        <Route path="/view/:id" element={<View />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/screeny/:id" element={<Screeny />} />
           <Route path="/administration" element={<Administration />} />
-      </Route>
-    </Routes>
-  </Router>
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

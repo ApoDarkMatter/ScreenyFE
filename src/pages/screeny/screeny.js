@@ -1,11 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import AddScreeny from '../../components/screeny/addScreeny/AddScreeny'
+import { Col, Container, Row } from 'react-bootstrap'
+import SingleScreeny from '../../components/screeny/singleScreeny/SingleScreeny'
+import axios from 'axios'
+import { useSelector } from 'react-redux'
+import { nanoid } from '@reduxjs/toolkit'
 
 const Screeny = () => {
 
     const {id} = useParams()
     console.log(id);
+
+    const isLoading = useSelector((state) => state.screen.isLoading)
+    const [screenyList, setScreenyList] = useState([])
+
+    const getScreenyList = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/screen/${id}`)
+        console.log(response.data);
+        setScreenyList(response.data.screens)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    useEffect(() => {
+      getScreenyList()
+    }, [isLoading])
+    
 
     if(!id) {
       return (
@@ -17,7 +40,18 @@ const Screeny = () => {
       return (
         <>
             <AddScreeny screenyId={id}/>
-            <div>screeny With Code</div>
+            <Container>
+              <h2>Screeny Already Inside This Container</h2> 
+              <Col>
+                    {screenyList && screenyList.map((screen) => {
+                        return (
+                        <Row key={nanoid()}>
+                            <SingleScreeny screen={screen}/>
+                        </Row>
+                        )
+                    })}
+                </Col>
+            </Container>
         </>
       )
     }

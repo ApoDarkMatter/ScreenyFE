@@ -4,17 +4,13 @@ const initialState = {
     isLoading: false,
     screenyContainerList: [],
     screenyList: [],
-    reload: false,
 }
 
 export const screeny = createSlice({
-    name: "screeny",
+    name: "screen",
     initialState: initialState,
     reducers: {
       setIsLoading: (state,action) => {
-        state.isLoading = action.payload
-      },
-      setReload: (state,action) => {
         state.isLoading = action.payload
       },
       setScreenyContainerList: (state,action) => {
