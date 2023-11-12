@@ -42,15 +42,18 @@ const Screeny = () => {
             <AddScreeny screenyId={id}/>
             <Container>
               <h2>Screeny Already Inside This Container</h2> 
-              <Col>
+              <Row>
+
                     {screenyList && screenyList.map((screen) => {
                         return (
-                        <Row key={nanoid()}>
-                            <SingleScreeny screen={screen}/>
-                        </Row>
+                        <Col xl={3} md={6} sm={12} key={nanoid()}>
+                              <SingleScreeny screen={screen}/>
+                        </Col>
                         )
                     })}
-                </Col>
+
+              </Row>
+              
             </Container>
         </>
       )

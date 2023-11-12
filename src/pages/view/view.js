@@ -1,8 +1,12 @@
 import { nanoid } from '@reduxjs/toolkit';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Button, Carousel, Form } from 'react-bootstrap';
+import { Button, Carousel, Container, Form, Row, Col } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
+import "./style.css"
+import {AiOutlineHome} from 'react-icons/ai'
+import HomeNavbar from '../../components/navbar/home-navbar/HomeNavbar';
+import HomeNavbarAuth from '../../components/navbar/home-navbar-auth/HomeNavbarAuth';
 
 const View = () => {
     const {id} = useParams()
@@ -27,33 +31,64 @@ const View = () => {
     }, [])
 
     if(!id) {
-      return (
-        <>
-            <div>View With NOCODE</div>
-            <Form.Group controlId="blog-form" className="mt-3">
-              <Form.Label>Screeny Code</Form.Label>
-                  <Form.Control
-                      size="lg"
-                      placeholder="Screeny Code"
-                      type="number"
-                      value={code}
-                      onChange={(e) => setCode(e.target.value)}
-                  />
-            </Form.Group>
-            <Button 
-              as={Link}
-              to={`/view/${code}`}>Start Screeny!</Button>
-        </>
-      )
+      if(localStorage.getItem('loggedInUser')) {
+        return (
+            <>
+              <HomeNavbarAuth/>
+              <Container>
+                <Row>
+                  <Col>
+                    <Form.Group controlId="blog-form" className="mt-3">
+                    <Form.Label>Screeny Code</Form.Label>
+                        <Form.Control
+                            size="lg"
+                            placeholder="Screeny Code"
+                            type="number"
+                            value={code}
+                            onChange={(e) => setCode(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Button 
+                      as={Link}
+                      to={`/view/${code}`}>Start Screeny!</Button>
+                  </Col>
+                </Row>
+              </Container>
+            </>
+        )
+    } else {
+        return (
+            <>
+              <Container>
+                <Row>
+                  <Col>
+                    <Form.Group controlId="blog-form" className="mt-3">
+                      <Form.Label>Screeny Code</Form.Label>
+                          <Form.Control
+                              size="lg"
+                              placeholder="Screeny Code"
+                              type="number"
+                              value={code}
+                              onChange={(e) => setCode(e.target.value)}
+                          />
+                    </Form.Group>
+                    <Button 
+                      as={Link}
+                      to={`/view/${code}`}>Start Screeny!</Button>
+                  </Col>
+                </Row>
+              </Container>
+            </>
+        )
+    }
     } else {
       return (
         <>
-            <div>View With Code</div>
-            <Carousel interval="5000" pause="false">
+            <Carousel interval="5000" pause="false" controls="false">
               {screenyList && screenyList.map((screeny) => {
                 return (
                   <Carousel.Item key={nanoid()}>
-                      <img src={screeny.imgUrl}/>
+                      <img className="carouselImage" src={screeny.imgUrl}/>
                       <Carousel.Caption>
                         <h3>{screeny.text}</h3>
                       </Carousel.Caption>
@@ -61,6 +96,12 @@ const View = () => {
                 )
               })}
             </Carousel>
+            <Button 
+              variant="outline-light" 
+              className="menuButton"
+              as={Link}
+              to={`/`}
+            ><AiOutlineHome/></Button>{' '}
         </>
       )
     }

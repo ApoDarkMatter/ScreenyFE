@@ -32,6 +32,8 @@ const SingleScreenyContainer = (screeny) => {
       try {
         await axios.delete(`${process.env.REACT_APP_SERVER_BASE_URL}/containers/${_id}`)
         console.log("Container deleted succesfully");
+        await axios.delete(`${process.env.REACT_APP_SERVER_BASE_URL}/screen/images/${_id}`)
+        console.log("Images inside container deleted successfully")
         dispatch(setIsLoading(!isLoading))
       } catch (error) {
         console.log(error);

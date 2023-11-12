@@ -14,7 +14,7 @@ const SingleScreeny = (screen) => {
 
     const deleteContainer = async () => {
         try {
-          await axios.delete(`${process.env.REACT_APP_SERVER_BASE_URL}/screen/${screen._id}`)
+          await axios.delete(`${process.env.REACT_APP_SERVER_BASE_URL}/screen/${screen.screen._id}`)
           console.log("Screen deleted succesfully");
           dispatch(setIsLoading(!isLoading))
         } catch (error) {
@@ -24,15 +24,15 @@ const SingleScreeny = (screen) => {
 
   return (
     <>
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={screen.screen.imgUrl} />
+        <Card>
+            <Card.Img variant="top" src={screen.screen.imgUrl} style={{ height: '10rem' }}/>
             <Card.Body>
-            <Card.Title>{screen.screen.text}</Card.Title>
-            <Button 
-                    style={{width: "100%"}} 
-                    variant="danger"
-                    onClick={deleteContainer}
-                    >Delete <AiOutlineDelete/></Button>
+              <Card.Title>{screen.screen.text}</Card.Title>
+              <Button 
+                      style={{width: "100%"}} 
+                      variant="danger"
+                      onClick={deleteContainer}
+                      >Delete <AiOutlineDelete/></Button>
             </Card.Body>
         </Card>
     </>  
