@@ -3,6 +3,7 @@ import HomeNavbar from '../../components/navbar/home-navbar/HomeNavbar'
 import HomeMainImage from '../../components/home-main-image/HomeMainImage'
 import WhatIs from '../../components/home-whatis-card/WhatIs'
 import StartScreeny from '../../components/start-screeny/StartScreeny'
+import Footer from '../../components/footer/Footer'
 
 const Home = () => {
     if(localStorage.getItem('loggedInUser')) {
@@ -12,6 +13,7 @@ const Home = () => {
                 <HomeMainImage />
                 <WhatIs />
                 <StartScreeny />
+                <Footer/>
             </>
         )
     } else {
@@ -21,6 +23,7 @@ const Home = () => {
                 <HomeMainImage />
                 <WhatIs />
                 <StartScreeny />
+                <Footer/>
             </>
         )
     }

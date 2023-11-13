@@ -14,8 +14,8 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/view/" element={<View />} />
         <Route path="/view/:id" element={<View />} />
+        <Route path="/view/" element={<View />} />
         <Route element={<ProtectedRoutes />}>
           <Route path="/screeny/:id" element={<Screeny />} />
           <Route path="/administration" element={<Administration />} />

@@ -51,7 +51,7 @@ const HomeNavbar = () => {
     }
 
     useEffect(() => {
-      if(isAuth) {
+      if(!isAuth) {
         navigate('/')
       }
     }, [])
@@ -91,6 +91,7 @@ const HomeNavbar = () => {
                             />
                             <Button
                                 type="submit"
+                                style={{marginRight:"0.5rem"}}
                             >Login</Button>
                             <Button variant="warning" onClick={handleShow}>
                                 Subscribe

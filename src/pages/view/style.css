@@ -11,3 +11,9 @@
     opacity: 50%;
     z-index: 100;
 }
+
+.bg100 {
+    height: 75vh;
+    margin: 0;
+    background-color: #FFCA2C;
+}

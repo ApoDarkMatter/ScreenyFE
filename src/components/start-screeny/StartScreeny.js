@@ -1,21 +1,19 @@
 import React, { useState } from 'react'
 import { Col, Row, Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import {AiOutlinePlaySquare} from 'react-icons/ai';
 
 
 function StartScreeny() {
 
     const [code, setCode] = useState("")
  
- 
     return (
         <>
-            <h2>Start Your Screeny Now!</h2>
-            <Row style={{backgroundColor:"#ffca2c", textAlign:"center", padding:"7rem"}}>
-                <Col xs={8} lg={4}>
-
-                </Col>
-                <Col xs={8} lg={4}>
+            <Row style={{backgroundColor:"#ffca2c", textAlign:"center", marginTop:"1rem", paddingBottom:"5rem", marginRight:"0"}}>
+                <h2 style={{paddingBottom:"3rem"}}>Start Your Screeny Now!</h2>
+                <Col xs={1} lg={3}></Col>
+                <Col xs={10} lg={6}>
                     <Form.Group>
                         <Form.Control
                             size="lg"
@@ -26,10 +24,13 @@ function StartScreeny() {
                         />
                         <Button 
                             as={Link}
-                            to={`/view/${code}`}>Start Screeny!
+                            to={`/view/${code}`}
+                            style={{marginTop:"1rem"}}
+                            variant="success">Start Screeny! <AiOutlinePlaySquare/>
                         </Button>
                     </Form.Group>
                 </Col>
+                <Col xs={1} lg={3}></Col>
             </Row>
         </>
   )

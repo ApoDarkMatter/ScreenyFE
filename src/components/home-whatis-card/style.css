@@ -1,14 +1,14 @@
 .column {
-    height: 20rem;
+    height: 20rem !important;
 }
 
 h2 {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 1rem !important;
 }
 
 .cardImage {
-    width: 10rem;
+    width: 10rem !important;
     margin: 0 auto;
     padding: 1rem;
 }

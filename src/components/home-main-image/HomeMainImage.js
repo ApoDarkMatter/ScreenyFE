@@ -6,7 +6,7 @@ import './style.css'
 const HomeMainImage = () => {
   return (
     <>
-      <Row style={{backgroundColor:"#0C52B2"}}>
+      <Row style={{backgroundColor:"#0C52B2", margin:"0"}}>
           <Image src={screeny} className="Image"/>
       </Row>
     </>

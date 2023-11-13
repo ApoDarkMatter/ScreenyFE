@@ -9,6 +9,7 @@ import SingleScreenyContainer from '../../components/screeny-container/singleScr
 import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux'
 import {setIsLoading} from '../../reducers/screeny'
+import Footer from '../../components/footer/Footer';
 
 function Administration() {
     const isLoading = useSelector((state) => state.screen.isLoading)
@@ -73,6 +74,7 @@ function Administration() {
                     </Button>
                 </Modal.Footer>
             </Modal>
+            <Footer/>
         </>
     
   )

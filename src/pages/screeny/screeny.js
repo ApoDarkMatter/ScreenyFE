@@ -6,6 +6,7 @@ import SingleScreeny from '../../components/screeny/singleScreeny/SingleScreeny'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
+import Footer from '../../components/footer/Footer'
 
 const Screeny = () => {
 
@@ -40,7 +41,7 @@ const Screeny = () => {
       return (
         <>
             <AddScreeny screenyId={id}/>
-            <Container>
+            <Container style={{paddingBottom:"1rem"}}>
               <h2>Screeny Already Inside This Container</h2> 
               <Row>
 
@@ -53,8 +54,8 @@ const Screeny = () => {
                     })}
 
               </Row>
-              
             </Container>
+            <Footer/>
         </>
       )
     }
