@@ -16,6 +16,8 @@ function AddScreeny(screenyId) {
     const session = useSession()
 
     const [text, setText] = useState("");
+    const [btnName,setBtnName] = useState("")
+    const [btnLoad,setBtnLoad] = useState(false)
 
       // create a state for the file
     const [file, setFile] = useState(null);
@@ -34,6 +36,7 @@ function AddScreeny(screenyId) {
 
       // create a function to upload the file
     const uploadFile = async (screen) => {  
+        setBtnLoad(true)
         const fileData = new FormData()
         fileData.append("screen", screen)
         
@@ -74,6 +77,7 @@ function AddScreeny(screenyId) {
           setFile(null);
           console.log("uploadedFile:", uploadedFile);
           dispatch(setIsLoading(!isLoading))
+          setBtnLoad(false)
         } catch (error) {
           console.log("Si è verificato un errore:", error);
         }
@@ -84,7 +88,11 @@ function AddScreeny(screenyId) {
     }
 
     useEffect(() => {
-      
+      if(btnLoad) {
+        setBtnName("Upload")
+      } else {
+        setBtnName("Add")
+      }
     }, [isLoading])
     
     
@@ -131,7 +139,7 @@ function AddScreeny(screenyId) {
                         marginLeft: "1em",
                         }}
                     >
-                        Add
+                        {btnName}
                     </Button>
                 </Form.Group>
             </Form>

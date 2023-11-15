@@ -10,6 +10,8 @@ import { Container, Row, Col, Modal, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsLoading } from '../../../reducers/screeny';
+import moment from 'moment';
+
 
 const SingleScreenyContainer = (screeny) => {
 
@@ -26,7 +28,7 @@ const SingleScreenyContainer = (screeny) => {
     setShow(true);
   }
 
-  const {_id, containerName, viewCode} = screeny.screeny
+  const {_id, containerName, viewCode, createdAt } = screeny.screeny
 
   const deleteContainer = async () => {
       try {
@@ -40,7 +42,7 @@ const SingleScreenyContainer = (screeny) => {
       }
     }
 
-  const modifyName = async () => {
+  const modifyName = async (event) => {
     event.preventDefault()
 
     try {
@@ -61,25 +63,27 @@ const SingleScreenyContainer = (screeny) => {
               <Card.Title><Button variant="light" onClick={handleShow}><BsPencil/></Button> {containerName}</Card.Title>
             </IconContext.Provider>
             <Card.Text>
-              Screeny Code: {viewCode}
+              Created At: {moment(createdAt).format('DD-MM-YYYY')}
+            </Card.Text>
+            <Card.Text>
+              Screeny Code: <b>{viewCode}</b>
             </Card.Text>
             <Container>
               <Row>
-                <Col>
-                  <Button 
-                    style={{width: "100%", margin: '0.5rem'}} 
-                    variant="warning"
-                    as={Link}
-                    to={`/screeny/${_id}`}
-                      >Modify Screeny <PiPencilCircleThin /></Button>
-                </Col>
-                <Col>
-                  <Button 
-                    style={{width: "100%", margin: '0.5rem'}} 
-                    variant="danger"
-                    onClick={deleteContainer}
-                    >Delete <AiOutlineDelete/></Button>
-                </Col>
+                <Button 
+                  style={{width: "100%", margin: '0.5rem'}} 
+                  variant="warning"
+                  as={Link}
+                  to={`/screeny/${_id}`}
+                    >Modify Screeny <PiPencilCircleThin />
+                </Button>
+
+                <Button 
+                  style={{width: "100%", margin: '0.5rem'}} 
+                  variant="danger"
+                  onClick={deleteContainer}
+                  >Delete <AiOutlineDelete/>
+                </Button>
               </Row>
               <Row>
                 <Button 
@@ -100,7 +104,7 @@ const SingleScreenyContainer = (screeny) => {
     <Modal.Body>
       <Form>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>New Container Name</Form.Label>
+          <Form.Label>Modify Container Name</Form.Label>
           <Form.Control
             type="text"
             value={name}

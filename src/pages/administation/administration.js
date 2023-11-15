@@ -10,8 +10,13 @@ import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux'
 import {setIsLoading} from '../../reducers/screeny'
 import Footer from '../../components/footer/Footer';
+import { useNavigate } from 'react-router-dom';
+import { isAuth } from '../../middlewares/ProtectedRoutes'
+
 
 function Administration() {
+
+    const navigate = useNavigate()
     const isLoading = useSelector((state) => state.screen.isLoading)
 
     const [screenyContainerList, setScreenyContainerList] = useState([])
@@ -38,6 +43,9 @@ function Administration() {
 
     useEffect(() => {
         getScreenyContainerList()
+        if(!isAuth) {
+            navigate('/')
+        }
         
     }, [isLoading])
 
@@ -51,15 +59,15 @@ function Administration() {
                 </Row>
             </Container>
             <Container>
-                <Col>
+                <Row>
                     {screenyContainerList && screenyContainerList.map((container) => {
                         return (
-                        <Row key={nanoid()}>
+                        <Col xl={4} md={6} sm={12} key={nanoid()}>
                             <SingleScreenyContainer screeny={container}/>
-                        </Row>
+                        </Col>
                         )
                     })}
-                </Col>
+                </Row>
             </Container>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
