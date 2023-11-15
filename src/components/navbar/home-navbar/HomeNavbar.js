@@ -10,6 +10,8 @@ import axios from 'axios'
 //import Subscribe from '../subscribe/subscribe';
 import Subscribe from '../../subscribe/Subscribe'
 import { Modal } from 'react-bootstrap';
+import Image from 'react-bootstrap/Image'
+import logo from './assets/logo.png'
 
 const HomeNavbar = () => {
 
@@ -59,7 +61,7 @@ const HomeNavbar = () => {
         return (
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container fluid>
-                    <Navbar.Brand>Screeny</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/"><Image src={logo} style={{width: "3rem"}}/> Screeny</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav

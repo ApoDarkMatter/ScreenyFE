@@ -74,6 +74,14 @@ const SingleScreenyContainer = (screeny) => {
               Screeny Code: <b>{viewCode}</b>
             </Card.Text>
             <Container>
+            <Row>
+                <Button 
+                  style={{margin: '0.5rem'}}
+                  variant="success" 
+                  as={Link}
+                  to={`/view/${viewCode}`}>Start <AiOutlinePlaySquare/>
+                </Button>
+              </Row>
               <Row>
                 <Button 
                   style={{width: "100%", margin: '0.5rem'}} 
@@ -82,7 +90,8 @@ const SingleScreenyContainer = (screeny) => {
                   to={`/screeny/${_id}`}
                     >Modify Screeny <PiPencilCircleThin />
                 </Button>
-
+              </Row>
+              <Row>
                 <Button 
                   style={{width: "100%", margin: '0.5rem'}} 
                   variant="danger"
@@ -90,14 +99,7 @@ const SingleScreenyContainer = (screeny) => {
                   >Delete <AiOutlineDelete/>
                 </Button>
               </Row>
-              <Row>
-                <Button 
-                  style={{margin: '0.5rem'}}
-                  variant="success" 
-                  as={Link}
-                  to={`/view/${viewCode}`}>Start <AiOutlinePlaySquare/>
-                </Button>
-              </Row>
+
             </Container>
         </Card.Body>
     </Card>

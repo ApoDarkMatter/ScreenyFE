@@ -76,13 +76,15 @@ function AddScreeny(screenyId) {
           console.log("Screen creato con successo:", response.data);
           setFile(null);
           console.log("uploadedFile:", uploadedFile);
+          setText("")
           dispatch(setIsLoading(!isLoading))
           setBtnLoad(false)
         } catch (error) {
           console.log("Si è verificato un errore:", error);
         }
       } else {
-        console.error("File non caricato");
+        console.error("File filed empty");
+        alert("File cannot be empty")
       }
 
     }
@@ -107,6 +109,7 @@ function AddScreeny(screenyId) {
                     <Form.Group controlId="blog-form" className="mt-3">
                         <Form.Label>Img</Form.Label>
                             <Form.Control
+                                value=""
                                 type="file"
                                 name="screen"
                                 size="lg"

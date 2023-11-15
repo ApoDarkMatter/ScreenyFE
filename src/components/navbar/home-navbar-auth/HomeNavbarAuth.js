@@ -7,6 +7,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import {Link} from 'react-router-dom'
 import useSession from '../../../hooks/useSession'
 import "./style.css"
+import Image from 'react-bootstrap/Image'
+import logo from './assets/logo.png'
 
 const HomeNavbarAuth = () => {
 
@@ -19,7 +21,7 @@ const HomeNavbarAuth = () => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
-                <Navbar.Brand href="#">Screeny</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/"><Image src={logo} style={{width: "3rem"}}/> Screeny</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav

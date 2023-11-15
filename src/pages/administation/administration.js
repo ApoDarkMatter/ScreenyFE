@@ -49,7 +49,7 @@ function Administration() {
             <h1>Screeny Container List</h1>
             <Container fluid="lg">
                 <Row >
-                    <Button size="lg" style={{marginTop: "1rem", marginBottom: "1rem"}}variant="warning" onClick={handleShow}>Add New Screeny Container <AiOutlinePlusSquare /></Button>
+                    <Button size="lg" style={{marginTop: "1rem", marginBottom: "1rem"}} variant="success" onClick={handleShow}>Add New Screeny Container <AiOutlinePlusSquare /></Button>
                 </Row>
             </Container>
             <Container>
