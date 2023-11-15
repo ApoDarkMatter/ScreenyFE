@@ -22,7 +22,9 @@ const SingleScreeny = (screen) => {
     const isLoading = useSelector((state) => state.screen.isLoading)
     const dispatch = useDispatch()
 
-    const deleteContainer = async () => {
+    const deleteScreeny = async () => {
+      const confirmString = window.confirm("Confirm Screeeny Delete?")
+      if(confirmString) {
         try {
           await axios.delete(`${process.env.REACT_APP_SERVER_BASE_URL}/screen/${screen.screen._id}`)
           console.log("Screen deleted succesfully");
@@ -30,6 +32,8 @@ const SingleScreeny = (screen) => {
         } catch (error) {
           console.log(error);
         }
+      }
+
       }
 
     const modifyName = async (event) => {
@@ -54,14 +58,14 @@ const SingleScreeny = (screen) => {
 
   return (
     <>
-        <Card>
+        <Card style={{marginBottom:"0.5rem"}}>
             <Card.Img variant="top" src={screen.screen.imgUrl} style={{ height: '10rem' }}/>
             <Card.Body>
               <Card.Title><Button variant="light" onClick={handleShow}><BsPencil/></Button> {screen.screen.text}</Card.Title>
               <Button 
                       style={{width: "100%"}} 
                       variant="danger"
-                      onClick={deleteContainer}
+                      onClick={deleteScreeny}
                       >Delete <AiOutlineDelete/></Button>
             </Card.Body>
         </Card>

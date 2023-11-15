@@ -5,6 +5,7 @@ import axios from 'axios';
 import HomeNavbarAuth from '../../navbar/home-navbar-auth/HomeNavbarAuth';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsLoading } from '../../../reducers/screeny'
+import { RotatingSquare } from  'react-loader-spinner'
 
 function AddScreeny(screenyId) {
     console.log(screenyId);
@@ -16,7 +17,6 @@ function AddScreeny(screenyId) {
     const session = useSession()
 
     const [text, setText] = useState("");
-    const [btnName,setBtnName] = useState("")
     const [btnLoad,setBtnLoad] = useState(false)
 
       // create a state for the file
@@ -88,64 +88,118 @@ function AddScreeny(screenyId) {
     }
 
     useEffect(() => {
-      if(btnLoad) {
-        setBtnName("Upload")
-      } else {
-        setBtnName("Add")
-      }
-    }, [isLoading])
-    
-    
 
-  return (
-    <> 
-        <HomeNavbarAuth/>
-        <Container>
-            <h2>Add New Screeny!</h2>
-        {/* setting the form encType */}
-            <Form
-                className="mt-5"
-                onSubmit={handleSubmit}
-                encType="multipart/form-data"
-                >
-                <Form.Group controlId="blog-form" className="mt-3">
-                    <Form.Label>Img</Form.Label>
-                        <Form.Control
-                            type="file"
-                            name="screen"
-                            size="lg"
-                            placeholder="Cover"
-                            onChange={onChangeSetFile}
-                    />
-                </Form.Group>
-                <Form.Group controlId="blog-form" className="mt-3">
-                    <Form.Label>Text</Form.Label>
-                        <Form.Control
-                            size="lg"
-                            placeholder="Text"
-                            value={text}
-                            onChange={(e) => setText(e.target.value)}
-                        />
-                </Form.Group>
-                <Form.Group className="d-flex mt-3 justify-content-end">
-                    <Button type="reset" size="lg" variant="outline-dark">
-                        Reset
-                    </Button>
-                    <Button
-                        type="submit"
-                        size="lg"
-                        variant="dark"
-                        style={{
-                        marginLeft: "1em",
-                        }}
+    }, [btnLoad,isLoading])
+    
+    
+    if(btnLoad) {
+      return (
+        <> 
+            <HomeNavbarAuth/>
+            <Container>
+                <h2>Add New Screeny!</h2>
+            {/* setting the form encType */}
+                <Form
+                    className="mt-5"
+                    onSubmit={handleSubmit}
+                    encType="multipart/form-data"
                     >
-                        {btnName}
-                    </Button>
-                </Form.Group>
-            </Form>
-        </Container>        
-    </>
-  )
+                    <Form.Group controlId="blog-form" className="mt-3">
+                        <Form.Label>Img</Form.Label>
+                            <Form.Control
+                                type="file"
+                                name="screen"
+                                size="lg"
+                                placeholder="Cover"
+                                onChange={onChangeSetFile}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="blog-form" className="mt-3">
+                        <Form.Label>Text</Form.Label>
+                            <Form.Control
+                                size="lg"
+                                placeholder="Text"
+                                value={text}
+                                onChange={(e) => setText(e.target.value)}
+                            />
+                    </Form.Group>
+                    <Form.Group className="d-flex mt-3 justify-content-end">
+                        <Button type="reset" size="lg" variant="outline-dark">
+                            Reset
+                        </Button>
+                        <Button
+                            type="submit"
+                            size="lg"
+                            variant="dark"
+                            style={{
+                            marginLeft: "1em",
+                            }}
+                        >
+                            <RotatingSquare
+                                      height="25"
+                                      width="25"
+                                      color="#ffffff"
+                                      ariaLabel="rotating-square-loading"
+                                      visible={true}
+                            />
+                        </Button>
+                    </Form.Group>
+                </Form>
+            </Container>        
+        </>
+      )
+    } else {
+      return (
+        <> 
+            <HomeNavbarAuth/>
+            <Container>
+                <h2>Add New Screeny!</h2>
+            {/* setting the form encType */}
+                <Form
+                    className="mt-5"
+                    onSubmit={handleSubmit}
+                    encType="multipart/form-data"
+                    >
+                    <Form.Group controlId="blog-form" className="mt-3">
+                        <Form.Label>Img</Form.Label>
+                            <Form.Control
+                                type="file"
+                                name="screen"
+                                size="lg"
+                                placeholder="Cover"
+                                onChange={onChangeSetFile}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="blog-form" className="mt-3">
+                        <Form.Label>Text</Form.Label>
+                            <Form.Control
+                                size="lg"
+                                placeholder="Text"
+                                value={text}
+                                onChange={(e) => setText(e.target.value)}
+                            />
+                    </Form.Group>
+                    <Form.Group className="d-flex mt-3 justify-content-end">
+                        <Button type="reset" size="lg" variant="outline-dark">
+                            Reset
+                        </Button>
+                        <Button
+                            type="submit"
+                            size="lg"
+                            variant="dark"
+                            style={{
+                            marginLeft: "1em",
+                            }}
+                        >
+                            Add
+                        </Button>
+                    </Form.Group>
+                </Form>
+            </Container>        
+        </>
+      )
+    }
+  
 }
 
 export default AddScreeny

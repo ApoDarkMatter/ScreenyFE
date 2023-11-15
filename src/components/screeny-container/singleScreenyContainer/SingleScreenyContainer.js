@@ -6,7 +6,7 @@ import {PiPencilCircleThin} from 'react-icons/pi';
 import {BsPencil} from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { IconContext } from "react-icons";
-import { Container, Row, Col, Modal, Form } from 'react-bootstrap';
+import { Container, Row, Modal, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsLoading } from '../../../reducers/screeny';
@@ -31,6 +31,9 @@ const SingleScreenyContainer = (screeny) => {
   const {_id, containerName, viewCode, createdAt } = screeny.screeny
 
   const deleteContainer = async () => {
+    const confirmString = window.confirm("Confirm Container Delete?")
+
+    if(confirmString) {
       try {
         await axios.delete(`${process.env.REACT_APP_SERVER_BASE_URL}/containers/${_id}`)
         console.log("Container deleted succesfully");
@@ -40,6 +43,8 @@ const SingleScreenyContainer = (screeny) => {
       } catch (error) {
         console.log(error);
       }
+    }
+      
     }
 
   const modifyName = async (event) => {

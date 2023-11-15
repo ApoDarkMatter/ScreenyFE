@@ -13,7 +13,6 @@ import Footer from '../../components/footer/Footer';
 const View = () => {
     const {id} = useParams()
 
-    const [code, setCode] = useState("")
     const [screenyList, setScreenyList] = useState([])
 
     const getScreenyList = async () => {

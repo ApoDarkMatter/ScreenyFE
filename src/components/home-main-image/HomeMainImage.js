@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Image } from 'react-bootstrap'
+import { Row, Image } from 'react-bootstrap'
 import screeny from './assets/screeny.png'
 import './style.css'
 

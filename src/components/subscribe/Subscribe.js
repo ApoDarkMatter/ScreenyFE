@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Subscribe() {
 
