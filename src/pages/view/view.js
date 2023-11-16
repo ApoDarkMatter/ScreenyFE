@@ -18,7 +18,9 @@ const View = () => {
     const getScreenyList = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/containers/viewCode/${id}`)
+        console.log("First Api Call");
         const responseAllScreen = await axios.get(`${process.env.REACT_APP_SERVER_BASE_URL}/screen/${response.data.codes._id}`)
+        console.log("Second Api Call");
         setScreenyList(responseAllScreen.data.screens)
       } catch (error) {
         console.log(error);

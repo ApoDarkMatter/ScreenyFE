@@ -17,19 +17,28 @@ function Subscribe() {
     password: password,
   };
 
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_BASE_URL}/users`,
-        formData
-      );
-      console.log("User created successfully:", response.data);
-      navigate('/')
-    } catch (error) {
-      console.log("Si è verificato un errore:", error);
+
+    if(isValidEmail(email)) {
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_SERVER_BASE_URL}/users`,
+          formData
+        );
+        console.log("User created successfully:", response.data);
+        navigate('/')
+      } catch (error) {
+        console.log("Si è verificato un errore:", error);
+      }
+    } else {
+      alert("Not valid email")
     }
+  
   }
 
   return (

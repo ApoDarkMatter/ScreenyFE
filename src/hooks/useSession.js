@@ -15,7 +15,8 @@ const useSession = () => {
         const currentDate = new Date()
 
         if (expirationDate < currentDate) {
-            localStorage.clear()
+            localStorage.removeItem('loggedInUser')
+            navigate('/', { replace: true })
         }
     }
 
