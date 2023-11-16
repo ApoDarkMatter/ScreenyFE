@@ -9,9 +9,12 @@ import HomeNavbar from '../../components/navbar/home-navbar/HomeNavbar';
 import HomeNavbarAuth from '../../components/navbar/home-navbar-auth/HomeNavbarAuth';
 import StartScreeny from '../../components/start-screeny/StartScreeny';
 import Footer from '../../components/footer/Footer';
+import { useSelector } from 'react-redux';
 
 const View = () => {
     const {id} = useParams()
+
+    const isLoading = useSelector((state) => state.screen.isLoading)
 
     const [screenyList, setScreenyList] = useState([])
 
@@ -31,7 +34,7 @@ const View = () => {
       if(id) {
         getScreenyList()
       }
-    }, [])
+    }, [isLoading])
 
     if(!id) {
       if(localStorage.getItem('loggedInUser')) {

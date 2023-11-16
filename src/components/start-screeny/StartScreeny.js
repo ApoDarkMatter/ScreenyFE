@@ -2,11 +2,16 @@ import React, { useState } from 'react'
 import { Col, Row, Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import {AiOutlinePlaySquare} from 'react-icons/ai';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsLoading } from '../../reducers/screeny';
 
 function StartScreeny() {
 
     const [code, setCode] = useState("")
+
+    const isLoading = useSelector((state) => state.screen.isLoading)
+
+    const dispatch = useDispatch()
  
     return (
         <>
@@ -27,6 +32,7 @@ function StartScreeny() {
                             to={`/view/${code}`}
                             style={{marginTop:"1rem"}}
                             variant="success">Start Screeny! <AiOutlinePlaySquare/>
+                            onClick={() => dispatch(setIsLoading(!isLoading))}
                         </Button>
                     </Form.Group>
                 </Col>
