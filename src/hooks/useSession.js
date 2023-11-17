@@ -16,7 +16,6 @@ const useSession = () => {
 
         if (expirationDate < currentDate) {
             localStorage.removeItem('loggedInUser')
-            navigate('/', { replace: true })
         }
     }
 
@@ -25,6 +24,7 @@ const useSession = () => {
             navigate('/', { replace: true })
         }
         checkTokenExpirationTime()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [navigate, session]);
 
     return decodedSession;
