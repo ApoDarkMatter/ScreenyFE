@@ -31,7 +31,8 @@ function Subscribe() {
           formData
         );
         console.log("User created successfully:", response.data);
-        navigate('/')
+        alert("User created successfully")
+        window.location.href="/"
       } catch (error) {
         console.log("Si è verificato un errore:", error);
       }
